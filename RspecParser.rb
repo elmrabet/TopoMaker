@@ -21,8 +21,30 @@ class RspecParser
     @xml.xpath("//link")
   end
 
+  def getLinkName(link)
+    link.attr("client_id")
+  end
+
+  def getLinkInterfaces(link)
+    tmp = link.xpath("//interface_ref")
+    ret=Array.new
+    tmp.each do |t|
+      ret.push(t.attr("client_id"))
+    end
+    return ret
+  end
+  
+  def getNodeName(node)
+    node.attr("client_id")
+  end
+
   def getInterfaces(node)
     Nokogiri::XML("#{node}").xpath("//interface")
+  end
+
+  #interface is a xml node like getInterfaces returns
+  def getInterfaceName(interface)
+    interface.attr("client_id")
   end
 
   def getOS(node)
@@ -33,16 +55,15 @@ class RspecParser
       return nil
     end
   end
-
+  
   #Return ip, netmask if exists, else nil
   def getNetwork(interface)
-    puts net = Nokogiri::XML("#{interface}").xpath("//ip")
-    ip = net.attr('address')
-    netmask = net.attr('netmask')
+    net = Nokogiri::XML("#{interface}").xpath("//ip")
+    if !net.empty?
+      ip = net.attr('address')
+      netmask = net.attr('netmask')
+    end
     return ip, netmask
   end
   
 end
-
-rs = RspecParser.new('samples_in/rspec_sample.xml')
-puts rs.getNetwork rs.getInterfaces(rs.getAllNodes[2])
