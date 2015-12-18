@@ -34,7 +34,7 @@ EOF")
 
   #Install at command on the node
   def installAt
-    %x(ssh root@#{nodeRealName} "apt-get update; apt-get --yes install at")
+    %x(ssh root@#{nodeRealName} "apt-get update &> /dev/null ; apt-get --yes install at &> /dev/null")
   end
 
   #Restart ip service after 1 min => require At

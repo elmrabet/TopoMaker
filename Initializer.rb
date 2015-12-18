@@ -92,8 +92,13 @@ class Initializer
   #Run a kadeploy command by OS
   def deploy(nodeList)
     group = Searcher.groupOS(nodeList)
+    threads = []
     group.keys.each do |k|
-      puts %x(kadeploy3 -e #{k} -k -m #{group[k].join(" -m ")})
+      threads << Thread.new {
+        out = %x(kadeploy3 -e #{k} -k -m #{group[k].join(" -m ")})
+        puts out if $verbose
+      }
+      threads.each { |t| t.join}
     end
   end
 
