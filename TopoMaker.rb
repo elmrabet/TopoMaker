@@ -72,6 +72,7 @@ if options[:init]
   puts nodes.to_yaml
 
   #Attente du redémarrage du service networking
+  puts "Waiting networking service to restart..." if $verbose
   rsNetServThread.join
   
 end

@@ -27,7 +27,7 @@ iface lo inet loopback
   end
 
   def writeConf(conf)
-    %x(ssh root@#{nodeRealName} "cat > /etc/network/interfaces2 << EOF 
+    %x(ssh root@#{nodeRealName} "cat > /etc/network/interfaces << EOF 
 #{conf} 
 EOF")
   end

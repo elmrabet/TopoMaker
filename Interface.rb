@@ -14,10 +14,9 @@ class Interface
   #Generate conf for /etc/network/interface
   #if not enough information : auto
   def genConf
-    conf="auto #{@realname}\n"
+    conf="auto #{@device}\n"
     if (ip != nil && netmask != nil)
-      conf+=%(
-iface #{@device} inet static
+      conf+=%(iface #{@device} inet static
       address #{@ip}
       netmask #{@netmask}
 )

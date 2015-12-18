@@ -19,10 +19,10 @@ class Vlan
 
   def setKavlan(interface)
     if !number.nil? && !interface.realname.nil?
-      puts %x(kavlan -j #$job_id -m #{interface.realname} -i #{@number} -s)
+      %x(kavlan -j #$job_id -m #{interface.realname} -i #{@number} -s)
       puts "Kavlan #{@number} set for #{interface.realname}" if $verbose
+      interface.kavlan=@number
     end
-    interface.kavlan=self
   end
   
   def resetKavlan(interface)
@@ -32,7 +32,7 @@ class Vlan
   end
 
   def setNumber(nb)
-    @number = nb
+    @number = nb.to_i
     interfaces.each do |i|
       setKavlan(i)
     end
