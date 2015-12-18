@@ -5,7 +5,7 @@ class Interface
   #realname is the name like eth0
   #kavlan is an Object Vlan
   attr_accessor :nodename, :ip, :netmask, :kavlan, :realname
-  attr_reader :confname
+  attr_reader :confname, :device
   
   def initialize(name)
     @confname = name
@@ -17,12 +17,12 @@ class Interface
     conf="auto #{@realname}\n"
     if (ip != nil && netmask != nil)
       conf+=%(
-    iface #{realname} inet static
-        address #{@ip}
-        netmask #{@netmask}
+iface #{@device} inet static
+      address #{@ip}
+      netmask #{@netmask}
 )
     else
-      conf+="iface #{@realname} inet dhcp\n"
+      conf+="iface #{@device} inet dhcp\n"
     end
   end
 
@@ -31,8 +31,17 @@ class Interface
     ret+= %(- #{confname}
     realname: #{realname}
     ip: #{ip}
-    netmask: #{netmask})
+    netmask: #{netmask}
+    device: #{device})
     return ret
+  end
+
+  def setRealName(hostname)
+    @realname = hostname
+  end
+
+  def setDevice(d)
+    @device = d
   end
 
 end

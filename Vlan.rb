@@ -1,10 +1,10 @@
 class Vlan
 
-  attr_reader :confname
-  attr_accessor :number, :interfaces
+  attr_reader :confname, :number, :interfaces
   
   def initialize(name)
     @confname=name
+    @interfaces = Array.new
   end
 
   def addInterface(interface)
@@ -14,17 +14,28 @@ class Vlan
 
   def delInterface(interface)
     interfaces.delete(interface)
+    resetKavlan(interface)
   end
 
   def setKavlan(interface)
-    #TODO kavlan -m @nodename -i @number -s
+    if !number.nil? && !interface.realname.nil?
+      puts %x(kavlan -j #$job_id -m #{interface.realname} -i #{@number} -s)
+      puts "Kavlan #{@number} set for #{interface.realname}" if $verbose
+    end
     interface.kavlan=self
   end
   
-  
   def resetKavlan(interface)
-    #TODO kavlan -m @nodename -i DEFAULT -s
+    puts %x(kavlan -j #$job_id -m @nodename -i DEFAULT -s)
+    puts "Kavlan DEFAULT set for #{interface.realname}" if $verbose
     interface.kavlan = nil
+  end
+
+  def setNumber(nb)
+    @number = nb
+    interfaces.each do |i|
+      setKavlan(i)
+    end
   end
 
 end

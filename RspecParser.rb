@@ -26,7 +26,7 @@ class RspecParser
   end
 
   def getLinkInterfaces(link)
-    tmp = link.xpath("//interface_ref")
+    tmp = link.xpath("interface_ref")
     ret=Array.new
     tmp.each do |t|
       ret.push(t.attr("client_id"))
@@ -50,7 +50,7 @@ class RspecParser
   def getOS(node)
     disk =  Nokogiri::XML("#{node}").xpath("//sliver_type/disk_image")
     if !disk.empty?
-      Nokogiri::XML("#{node}").xpath("//sliver_type/disk_image").attr('name')
+      return Nokogiri::XML("#{node}").xpath("//sliver_type/disk_image").attr('name').value
     else
       return nil
     end
@@ -60,8 +60,8 @@ class RspecParser
   def getNetwork(interface)
     net = Nokogiri::XML("#{interface}").xpath("//ip")
     if !net.empty?
-      ip = net.attr('address')
-      netmask = net.attr('netmask')
+      ip = net.attr('address').value
+      netmask = net.attr('netmask').value
     end
     return ip, netmask
   end
