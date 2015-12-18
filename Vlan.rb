@@ -17,6 +17,7 @@ class Vlan
     resetKavlan(interface)
   end
 
+  #Use kavlan command to set an interface in a Vlan
   def setKavlan(interface)
     if !number.nil? && !interface.realname.nil?
       %x(kavlan -j #$job_id -m #{interface.realname} -i #{@number} -s)
@@ -24,13 +25,15 @@ class Vlan
       interface.kavlan=@number
     end
   end
-  
+
+  #Set an interface in the default Vlan
   def resetKavlan(interface)
     puts %x(kavlan -j #$job_id -m @nodename -i DEFAULT -s)
     puts "Kavlan DEFAULT set for #{interface.realname}" if $verbose
     interface.kavlan = nil
   end
 
+  #Set the kavlan number
   def setNumber(nb)
     @number = nb.to_i
     interfaces.each do |i|

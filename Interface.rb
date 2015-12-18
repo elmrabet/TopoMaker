@@ -25,16 +25,6 @@ class Interface
     end
   end
 
-  def toString
-    ret=""
-    ret+= %(- #{confname}
-    realname: #{realname}
-    ip: #{ip}
-    netmask: #{netmask}
-    device: #{device})
-    return ret
-  end
-
   def setRealName(hostname)
     @realname = hostname
   end

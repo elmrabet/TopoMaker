@@ -32,10 +32,12 @@ iface lo inet loopback
 EOF")
   end
 
+  #Install at command on the node
   def installAt
     %x(ssh root@#{nodeRealName} "apt-get update; apt-get --yes install at")
   end
 
+  #Restart ip service after 1 min => require At
   def restartIpService
     %x(ssh root@#{nodeRealName} "echo \'service networking restart\' | at now + 1 minute")
   end
@@ -44,19 +46,7 @@ EOF")
     @nodeRealName = host
   end
 
-  def toString
-    ret=""
-    ret+= %(- #{nodeConfName}
-   name: #{nodeRealName}
-   os: #{os}
-   interfaces:   
-)
-    interfaces.each do |i|
-      ret+=i.toString
-    end
-    return ret
-  end
-
+  #Set the hostname and device name of the interface from the API
   def setInterfacesHostname
     #API
     api_url = "https://api.grid5000.fr/sid/"
@@ -70,7 +60,7 @@ EOF")
     devices = Array.new
     addresses = Array.new
     apinode['network_adapters'].each do |na|
-      if na['enabled'] == true && na['device'].include?("eth")
+      if na['enabled'] == true && na['device'].include?("eth") #Only eth device will be used
         devices.push na['device']
         if !na['network_address'].nil?
           addresses.push na['network_address']
@@ -81,6 +71,7 @@ EOF")
     end
     if addresses.size < @interfaces.size
       STDERR.puts "Not enough network adapters on #{@nodeRealName}"
+      STDERR.puts "This node must have #{@interfaces.size} interfaces"
       exit 1
     end
     i=0
