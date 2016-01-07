@@ -52,6 +52,8 @@ if options[:init]
   nodes.each do |n|
     n.setInterfacesHostname
   end
+  
+  init.resetAlltoDefaultVlan(nodes)
 
   if options[:deploy]
     #Deploiement des noeuds
@@ -63,11 +65,6 @@ if options[:init]
 
   #Attribution du numéro des Vlans
   init.defVlanNumber(jobid, vlans)
-
-  #Affichages
-  # nodes.each do |n|
-  #   puts n.toString
-  # end
 
   puts nodes.to_yaml
 

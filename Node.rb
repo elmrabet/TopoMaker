@@ -8,7 +8,7 @@ class Node
   
   def initialize(confname, op_sys=nil)
     @nodeConfName = confname
-    @os = op_sys.nil? ? 'jessie-x64-prod' : op_sys
+    @os = op_sys.nil? ? 'jessie-x64-min' : op_sys
     @interfaces = Array.new
   end
 

@@ -42,6 +42,10 @@ class Initializer
       vlan = Vlan.new(@parser.getLinkName(link))
       @parser.getLinkInterfaces(link).each do |nameInt|
         interface = Searcher.searchInterface(nameInt, nodeList)
+        if interface.nil?
+          STDERR.puts "The interface #{nameInt} set in link #{vlan.confname} does not exists"
+          exit 1
+        end
         vlan.addInterface(interface)
       end
       vlans.push(vlan)
@@ -94,16 +98,19 @@ class Initializer
     group = Searcher.groupOS(nodeList)
     threads = []
     group.keys.each do |k|
+      puts "Deploying #{k}" if $verbose
       threads << Thread.new {
+        puts "kadeploy3 -e #{k} -k -m #{group[k].join(" -m ")}" if $verbose
         out = %x(kadeploy3 -e #{k} -k -m #{group[k].join(" -m ")})
         puts out if $verbose
       }
-      threads.each { |t| t.join}
     end
+    threads.each { |t| t.join}
   end
 
   #Write /etc/network/interfaces on each node and restart service
   def setIp(nodeList)
+    puts "Defining ip..."
     threads = []
     nodeList.each do |node|
       threads << Thread.new {
@@ -118,6 +125,16 @@ class Initializer
         puts "Networking service restarted on each node" if $verbose
       }
       return sleepingThread
+  end
+
+  def resetAlltoDefaultVlan(nodeList)
+    puts "Reset all nodes to default Vlan..." if $verbose
+    command=""
+    nodeList.each do |node|
+      command+="-m #{node.nodeRealName} "
+    end
+    puts command
+    %x(kavlan -i DEFAULT -s #{command})
   end
   
 end

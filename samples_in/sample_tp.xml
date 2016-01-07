@@ -6,7 +6,7 @@
       <ip address="192.168.1.1" type="ipv4" netmask="255.255.255.0" />
     </interface>
      <sliver_type name="raw-pc">
-      <disk_image name="wheezy-x64-prod" />
+      <disk_image name="jessie-x64-prod" />
     </sliver_type>
   </node>
   <node client_id="node-2">
