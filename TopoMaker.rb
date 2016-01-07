@@ -61,6 +61,8 @@ if options[:init]
     init.deploy(nodes)
   end
 
+  init.putSSHkey(nodes)
+  
   rsNetServThread = init.setIp(nodes)
 
   #Attribution du numéro des Vlans

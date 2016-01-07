@@ -14,11 +14,12 @@
       <ip address="192.168.1.2" type="ipv4" netmask="255.255.255.0" />
     </interface>
   </node>
-   <link client_id="link-0">
-     <interface_ref client_id="dhcp_2" />
-   </link>
-   <link client_id="link-1">
-     <interface_ref client_id="interface-1" />
-     <interface_ref client_id="interface-3" />
-   </link>
+  <link client_id="link-0">
+    <interface_ref client_id="dhcp_1" />
+    <interface_ref client_id="dhcp_2" />
+  </link>
+  <link client_id="link-1">
+    <interface_ref client_id="interface-1" />
+    <interface_ref client_id="interface-3" />
+  </link>
 </rspec>

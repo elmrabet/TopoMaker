@@ -100,7 +100,6 @@ class Initializer
     group.keys.each do |k|
       puts "Deploying #{k}" if $verbose
       threads << Thread.new {
-        puts "kadeploy3 -e #{k} -k -m #{group[k].join(" -m ")}" if $verbose
         out = %x(kadeploy3 -e #{k} -k -m #{group[k].join(" -m ")})
         puts out if $verbose
       }
@@ -135,6 +134,15 @@ class Initializer
     end
     puts command
     %x(kavlan -i DEFAULT -s #{command})
+  end
+
+  def putSSHkey(nodeList)
+    dir=%x(mktemp -d XXXXX).strip
+    %x(ssh-keygen -t rsa -f #{dir}/id_rsa -P "" -q)
+    nodeList.each do |node|
+      %x(scp #{dir}/id_rsa root@#{node.nodeRealName}:.ssh/id_rsa && ssh-copy-id -i #{dir}/id_rsa.pub root@#{node.nodeRealName})
+    end
+    %x(rm -rf #{dir})
   end
   
 end
