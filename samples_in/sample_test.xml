@@ -5,6 +5,10 @@
     <interface client_id="interface-1">
       <ip address="192.168.1.1" type="ipv4" netmask="255.255.255.0" />
     </interface>
+    <auto_install>
+      <apt name="tcpdump"/>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
   </node>
   <node client_id="node-2">
     <interface client_id="dhcp_2"/>

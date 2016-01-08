@@ -65,5 +65,10 @@ class RspecParser
     end
     return ip, netmask
   end
+
+  def getAptNode(node)
+    apt = Nokogiri::XML("#{node}").xpath("//auto_install/apt")
+    return apt
+  end
   
 end

@@ -4,12 +4,13 @@ require 'rest-client'
 class Node
 
   attr_reader :nodeConfName  #The name of the node in conf file
-  attr_accessor :interfaces, :os, :nodeRealName
+  attr_accessor :interfaces, :os, :nodeRealName, :toInstall
   
   def initialize(confname, op_sys=nil)
     @nodeConfName = confname
     @os = op_sys.nil? ? 'jessie-x64-min' : op_sys
     @interfaces = Array.new
+    @toInstall = Array.new
   end
 
   def addInterface(interface)
@@ -81,5 +82,11 @@ EOF")
       i+=1
     end
   end
-  
+
+  def installToInstall
+    if !toInstall.empty?
+      %x(ssh root@#{nodeRealName} "apt-get update &> /dev/null ; apt-get --yes install #{@toInstall.join(" ")} &> /dev/null")
+    end
+  end
+
 end

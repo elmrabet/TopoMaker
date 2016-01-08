@@ -62,6 +62,8 @@ if options[:init]
   end
 
   init.putSSHkey(nodes)
+
+  init.installAll(nodes)
   
   rsNetServThread = init.setIp(nodes)
 

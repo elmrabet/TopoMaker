@@ -19,6 +19,7 @@ class Initializer
     @parser.getAllNodes.each do |node|
       nodes.push(Node.new(@parser.getNodeName(node), @parser.getOS(node)))
       nodes.last.interfaces=interfacesCreate(node)
+      nodes.last.toInstall=listToInstall(node)
     end
     return nodes
   end
@@ -51,6 +52,14 @@ class Initializer
       vlans.push(vlan)
     end
     return vlans
+  end
+
+  def listToInstall(node)
+    ret = Array.new
+    @parser.getAptNode(node).each do |apt|
+      ret.push(apt.attr('name'))
+    end
+    return ret
   end
 
   #Define kavlan number from the reservation and return of kavlan command
@@ -132,7 +141,6 @@ class Initializer
     nodeList.each do |node|
       command+="-m #{node.nodeRealName} "
     end
-    puts command
     %x(kavlan -i DEFAULT -s #{command})
   end
 
@@ -143,6 +151,17 @@ class Initializer
       %x(scp #{dir}/id_rsa root@#{node.nodeRealName}:.ssh/id_rsa && ssh-copy-id -i #{dir}/id_rsa.pub root@#{node.nodeRealName})
     end
     %x(rm -rf #{dir})
+  end
+
+  def installAll(nodes)
+    puts "Installing package..."
+    threads = []
+    nodes.each do |node|
+      threads << Thread.new {node.installToInstall}
+    end
+    threads.each do |t|
+      t.join
+    end
   end
   
 end
