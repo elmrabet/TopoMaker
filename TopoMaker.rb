@@ -19,9 +19,9 @@ OptionParser.new do |opts|
     options[:filename] = v
   end
 
-  opts.on("-i", "Init from file (-f and -j required)") do |v|
-    options[:init] = v
-  end
+  # opts.on("-i", "Init from file (-f and -j required)") do |v|
+  #   options[:init] = v
+  # end                           
   
   opts.on("-v", "Run verbosely") do |v|
     $verbose = true
@@ -33,7 +33,7 @@ OptionParser.new do |opts|
   
 end.parse!
 
-if options[:init]
+#if options[:init]
   STDERR.puts "You must use -j with -i" if options[:jobId].nil?
   STDERR.puts "You must use -f with -i" if options[:filename].nil?
   exit 1 if options[:jobId].nil? || options[:filename].nil?
@@ -76,4 +76,4 @@ if options[:init]
   puts "Waiting networking service to restart..." if $verbose
   rsNetServThread.join
   
-end
+#end

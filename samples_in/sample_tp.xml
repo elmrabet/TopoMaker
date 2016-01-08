@@ -1,55 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
-  <node client_id="node-1">
-    <interface client_id="prod-0"/>
+<rspec>
+  <node client_id="node-2">
+    <interface client_id="interface-0"/> <!--No IP precised equals to DHCP-->
     <interface client_id="interface-1">
+      <ip address="192.168.1.3" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <sliver_type name="raw-pc">
+      <disk_image name="jessie-x64-min" /> <!--This is just for the example because default OS chosen by topomaker is jessie-x64-min -->
+    </sliver_type>
+    <auto_install>
+      <apt name="tcpdump"/>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+  <node client_id="node-1"> 	<!--Here we will have DHCP on jessie x64 min-->
+    <interface client_id="interface-2"/> 
+  </node>
+  <node client_id="node-3"> 	<!--node 3 is equivalent to our node_nancy here it will be on the same site, as we saw it doesn't matter with global vlan-->
+    <interface client_id="interface-4">
       <ip address="192.168.1.1" type="ipv4" netmask="255.255.255.0" />
     </interface>
-     <sliver_type name="raw-pc">
-      <disk_image name="jessie-x64-prod" />
-    </sliver_type>
   </node>
-  <node client_id="node-2">
-    <interface client_id="interface-2">
-      <ip address="192.168.1.2" type="ipv4" netmask="255.255.255.0" />
-    </interface>
-    <interface client_id="interface-3">
-      <ip address="192.168.2.1" type="ipv4" netmask="255.255.255.0" />
-    </interface>
-    <sliver_type name="raw-pc">
-      <disk_image name="wheezy-x64-prod" />
-    </sliver_type>
-  </node>
-  <node client_id="node-3">
-    <interface client_id="interface-4">
-      <ip address="192.168.2.2" type="ipv4" netmask="255.255.255.0" />
-    </interface>
-      <interface client_id="interface-5">
-      <ip address="192.168.3.1" type="ipv4" netmask="255.255.255.0" />
-      </interface>
-      <sliver_type name="raw-pc">
-	<disk_image name="wheezy-x64-prod" />
-      </sliver_type>
-  </node>
-  <node client_id="node-4">
-    <interface client_id="prod-1"/>
-    <interface client_id="interface-6">
-      <ip address="192.168.3.2" type="ipv4" netmask="255.255.255.0" />
-    </interface>
-    <sliver_type name="raw-pc">
-      <disk_image name="wheezy-x64-prod" />
-    </sliver_type>
-  </node>
-   <link client_id="link-0">
-     <interface_ref client_id="interface-1" />
-     <interface_ref client_id="interface-2" />
-   </link>
-      <link client_id="link-1">
-     <interface_ref client_id="interface-3" />
-     <interface_ref client_id="interface-4" />
-   </link>
-   <link client_id="link-2">
-     <interface_ref client_id="interface-5" />
-     <interface_ref client_id="interface-6" />
-   </link>
+  <link client_id="link-0"> 	<!--link are equivalent to VLAN-->
+    <interface_ref client_id="interface-0" />
+    <interface_ref client_id="interface-2" />
+  </link>
+  <link client_id="link-1">
+    <interface_ref client_id="interface-1" />
+    <interface_ref client_id="interface-4" />
+  </link>
 </rspec>
