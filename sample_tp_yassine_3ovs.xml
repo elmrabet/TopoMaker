@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <rspec>
+    <node client_id="node-0">
+    <interface client_id="interface-0"> 
+      <ip address="192.168.1.1" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-1">
+      <ip address="192.168.1.2" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-2">
+      <ip address="192.168.1.3" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+  <node client_id="node-1">    
+    <interface client_id="interface-3">
+      <ip address="192.168.1.4" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+  </node>
+  <node client_id="node-2">   
+    <interface client_id="interface-4">
+      <ip address="192.168.1.5" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+  </node>
+  <node client_id="node-3">
+    <interface client_id="interface-5">
+      <ip address="192.168.1.6" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+  </node>
+  <link client_id="link-0">     <!--link are equivalent to VLAN-->
+    <interface_ref client_id="interface-0" />
+    <interface_ref client_id="interface-3" />
+  </link>
+  <link client_id="link-1">
+    <interface_ref client_id="interface-1" />
+    <interface_ref client_id="interface-4" />
+  </link>
+  <link client_id="link-2">
+    <interface_ref client_id="interface-2" />
+    <interface_ref client_id="interface-5" />
+  </link>
+
+</rspec>
