@@ -66,7 +66,10 @@ end.parse!
   init.installAll(nodes)
   
   rsNetServThread = init.setIp(nodes)
-
+#ajouter par yassine
+   puts " begin confovs"
+   init.confovs(nodes)
+   puts " end confovs" 
   #Attribution du numéro des Vlans
   init.defVlanNumber(jobid, vlans)
 

@@ -163,6 +163,15 @@ class Initializer
       t.join
     end
   end
-  
+
+
+
+#ajouter par yassine
+  def confovs(nodes)
+     nodes.each do |node|
+     puts "#{node.nodeRealName}"
+     node.ovs
+     end
+  end   
 end
 

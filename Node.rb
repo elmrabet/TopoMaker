@@ -4,13 +4,14 @@ require 'rest-client'
 class Node
 
   attr_reader :nodeConfName  #The name of the node in conf file
-  attr_accessor :interfaces, :os, :nodeRealName, :toInstall
+  attr_accessor :interfaces, :os, :nodeRealName, :toInstall, :eth
   
   def initialize(confname, op_sys=nil)
     @nodeConfName = confname
     @os = op_sys.nil? ? 'jessie-x64-min' : op_sys
     @interfaces = Array.new
     @toInstall = Array.new
+    @eth=Array.new
   end
 
   def addInterface(interface)
@@ -61,8 +62,9 @@ EOF")
     devices = Array.new
     addresses = Array.new
     apinode['network_adapters'].each do |na|
-      if na['enabled'] == true && na['device'].include?("eth") #Only eth device will be used
+      if na['mountable'] == true && na['device'].include?("eth") && na['device']!="eth0" #Only eth device will be used
         devices.push na['device']
+        eth.push na['device']
         if !na['network_address'].nil?
           addresses.push na['network_address']
         else
@@ -88,5 +90,28 @@ EOF")
       %x(ssh root@#{nodeRealName} "apt-get update &> /dev/null ; apt-get --yes install #{@toInstall.join(" ")} &> /dev/null")
     end
   end
+
+ #ajouter par yassine
+    def ovs
+      if !toInstall.empty? && toInstall.include?("openvswitch-switch")
+         puts toInstall
+         puts "#{nodeRealName} a ovs installé"
+         puts " parametre : ovs-vsctl add-br OVSbr"
+         %x(ssh root@#{nodeRealName} "ovs-vsctl add-br OVSbr")
+         puts "fin"
+         puts " parametre: ovs-vsctl set Bridge OVSbr stp_enable=true"
+         %x(ssh root@#{nodeRealName} "ovs-vsctl set Bridge OVSbr stp_enable=true")
+         puts "fin"
+         puts "#{@eth}"
+         @eth.each do |d|
+         puts "parametre : ifconfig #{d} 0"
+         %x(ssh root@#{nodeRealName} "ifconfig #{d} 0")
+         puts "parametre : ovs-vsctl add-port OVSbr #{d}"
+         %x(ssh root@#{nodeRealName} "ovs-vsctl add-port OVSbr #{d}")
+         puts " parametre : ifconfig #{d} promisc up"
+         %x(ssh root@#{nodeRealName} "ifconfig #{d} promisc up")
+         end
+      end
+  end 
 
 end
