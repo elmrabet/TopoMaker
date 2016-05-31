@@ -64,7 +64,7 @@ class Initializer
 
   #Define kavlan number from the reservation and return of kavlan command
   def defVlanNumber(jobid, vlanList)
-    vlanNb = %x(kavlan -V -j #{jobid} && | uniq echo $?)
+    vlanNb = %x(kavlan -V -j #{jobid}  | uniq echo $?)
     vlans = vlanNb.split("\n")
     if(vlans.delete_at(vlans.size-1).to_i != 0)
       STDERR.puts vlanNb
