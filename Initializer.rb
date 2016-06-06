@@ -64,9 +64,7 @@ class Initializer
 
   #Define kavlan number from the reservation and return of kavlan command
   def defVlanNumber(jobid, vlanList)
-
-    vlanNb = %x(kavlan -V -j #{jobid}  | uniq && echo $?)
-
+    vlanNb = %x(kavlan -V -j #{jobid} | uniq && echo $?)
     vlans = vlanNb.split("\n")
     if(vlans.delete_at(vlans.size-1).to_i != 0)
       STDERR.puts vlanNb
@@ -87,7 +85,7 @@ class Initializer
   #Define hostname for each node from the /var/lib/oar/$OAR_NODEFILE 
   def defNodeHostname(jobid, nodeList)
     hosts = %x(uniq /var/lib/oar/#{jobid} && echo $?)
-    hostList = hosts.split("\n")
+    hostList = hosts.split("\n") 
     if(hostList.delete_at(hostList.size-1).to_i != 0)
       STDERR.puts hosts
       exit 1
@@ -166,6 +164,18 @@ class Initializer
     end
   end
 
+#ajouter par yassine
+def lastnode(jobid)
+    hosts = %x(uniq /var/lib/oar/#{jobid})
+    hostList = hosts.split("\n")
+    hostlast=hostList.last
+    puts"le dernier noeud est #{hostlast}"
+    hostlastadresse=%x(host #{hostlast} )
+    puts hostlastadresse
+    adressetab=hostlastadresse.split( )
+    adresse=adressetab.last
+    return adresse
+end
 
 
 #ajouter par yassine
@@ -175,5 +185,24 @@ class Initializer
      node.ovs
      end
   end   
-end
 
+#ajouter par yassine
+  def confcontroleur(nodes,adresse)
+     nodes.each do |node|
+     puts "#{node.nodeRealName}"
+     node.controleur(adresse)
+     end
+  end   
+
+#ajouter par yassine 
+
+   def lancementcontroleur(adresse)
+     %x(ssh root@#{adresse} "git clone http://github.com/noxrepo/pox")
+     %x(ssh root@#{adresse} "cd pox ; ./pox.py samples.pretty_log forwarding.l2_learning")
+
+   end
+
+
+
+
+end

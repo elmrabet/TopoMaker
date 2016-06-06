@@ -70,11 +70,29 @@ end.parse!
    puts " begin confovs"
    init.confovs(nodes)
    puts " end confovs" 
+
   #Attribution du numéro des Vlans
   init.defVlanNumber(jobid, vlans)
 
   puts nodes.to_yaml
+#ajouter par yassine
+puts "si vous allez utiliser un controleur sur le dérnier noeud ecrire <oui> sinon n'importe quelle caractère "
+o=gets.chomp
+if o=="oui"
+init.lastnode(jobid) 
+adresse= init.lastnode(jobid)
 
+   puts " begin controleur"
+   init.confcontroleur(nodes,adresse)
+   puts " end controleur" 
+   
+#ajouter par yassine 
+   puts "lancement controleur"
+
+  init.lancementcontroleur(adresse)
+
+   puts " controleur lancé"
+end  
   #Attente du redémarrage du service networking
   puts "Waiting networking service to restart..." if $verbose
   rsNetServThread.join

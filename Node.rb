@@ -87,7 +87,7 @@ EOF")
 
   def installToInstall
     if !toInstall.empty?
-      %x(ssh root@#{nodeRealName} "apt-get update &> /dev/null ; apt-get --yes install #{@toInstall.join(" ")} &> /dev/null")
+          %x(ssh root@#{nodeRealName} "apt-get update &> /dev/null ; apt-get --yes install #{@toInstall.join(" ")} &> /dev/null")
     end
   end
 
@@ -111,7 +111,21 @@ EOF")
          puts " parametre : ifconfig #{d} promisc up"
          %x(ssh root@#{nodeRealName} "ifconfig #{d} promisc up")
          end
-      end
-  end 
+	   
+       	end 
+    end
 
-end
+
+#ajouter par yassine    
+  
+   def controleur(adresse)
+       if  !toInstall.empty? && toInstall.include?("openvswitch-switch")
+          #Tell OpenVSwitch to be inactive when no external controller is plugged
+            %x(ssh root@#{nodeRealName} "ovs-vsctl set-fail-mode OVSbr secure")
+           
+            %x(ssh root@#{nodeRealName} "ovs-vsctl set-controller OVSbr tcp:#{adresse}:6633")
+       end 
+  end 
+     
+
+end 
