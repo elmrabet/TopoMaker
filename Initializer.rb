@@ -168,7 +168,7 @@ class Initializer
 def lastnode(jobid)
     hosts = %x(uniq /var/lib/oar/#{jobid})
     hostList = hosts.split("\n")
-    hostlast=hostList.last
+    hostlast=hostList[$nbr]
     puts"le dernier noeud est #{hostlast}"
     hostlastadresse=%x(host #{hostlast} )
     puts hostlastadresse

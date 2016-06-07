@@ -47,12 +47,11 @@ end.parse!
 
   #Attribution des hostname aux Nodes
   init.defNodeHostname(jobid, nodes)
-
   #Attribution des hostnames aux Interfaces
   nodes.each do |n|
     n.setInterfacesHostname
   end
-  
+  $nbr=(nodes.length-1)
   init.resetAlltoDefaultVlan(nodes)
 
   if options[:deploy]
@@ -75,24 +74,29 @@ end.parse!
   init.defVlanNumber(jobid, vlans)
 
   puts nodes.to_yaml
-#ajouter par yassine
-puts "si vous allez utiliser un controleur sur le dérnier noeud ecrire <oui> sinon n'importe quelle caractère "
+#ajouter par yassine 
+puts "si vous voulez utiliser un contrôleur pox sur le dérnier noeud vous deviez mettre git et phyton comme packages à installer sur le dérnier noeud 
+dans ce cas ecrivez oui sinon n'importe quel caractère"
 o=gets.chomp
+
 if o=="oui"
-init.lastnode(jobid) 
+
+init.lastnode(jobid)
 adresse= init.lastnode(jobid)
 
+puts adresse
    puts " begin controleur"
    init.confcontroleur(nodes,adresse)
-   puts " end controleur" 
-   
-#ajouter par yassine 
+   puts " end controleur"
+
+
    puts "lancement controleur"
 
   init.lancementcontroleur(adresse)
 
    puts " controleur lancé"
-end  
+end
+
   #Attente du redémarrage du service networking
   puts "Waiting networking service to restart..." if $verbose
   rsNetServThread.join
