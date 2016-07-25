@@ -1,0 +1,619 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+ <rspec>
+#---------------------------------------------------------------------- 
+    <node client_id="ovs-11">
+    <interface client_id="interface-11"> 
+      <ip address="192.168.1.11" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-12">
+      <ip address="192.168.1.12" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+     <interface client_id="interface-13">
+      <ip address="192.168.1.13" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+  <node client_id="ovs-12">    
+    <interface client_id="interface-14">
+      <ip address="192.168.1.14" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-15">
+      <ip address="192.168.1.15" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-16">
+      <ip address="192.168.1.16" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+  <node client_id="ovs-13">   
+    <interface client_id="interface-17">
+      <ip address="192.168.1.17" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-18">
+      <ip address="192.168.1.18" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-19">
+      <ip address="192.168.1.19" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ <node client_id="ovs-14">
+    <interface client_id="interface-110">
+      <ip address="192.168.1.20" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-111">
+      <ip address="192.168.1.21" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+     <interface client_id="interface-112">
+      <ip address="192.168.1.22" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ <node client_id="ovs-15">
+    <interface client_id="interface-113">
+      <ip address="192.168.1.23" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-114">
+      <ip address="192.168.1.24" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-115">
+      <ip address="192.168.1.25" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+#-----------------------------------------------------------------------
+ <node client_id="ovs-21">
+    <interface client_id="interface-21">
+      <ip address="192.168.1.26" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-22">
+      <ip address="192.168.1.27" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-23">
+      <ip address="192.168.1.28" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+  <node client_id="ovs-22">
+    <interface client_id="interface-24">
+      <ip address="192.168.1.29" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-25">
+      <ip address="192.168.1.30" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-26">
+      <ip address="192.168.1.31" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-27">
+      <ip address="192.168.1.32" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+  <node client_id="ovs-23">
+    <interface client_id="interface-28">
+      <ip address="192.168.1.33" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-29">
+      <ip address="192.168.1.34" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-210">
+      <ip address="192.168.1.35" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-211">
+      <ip address="192.168.1.36" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ <node client_id="ovs-24">
+    <interface client_id="interface-212">
+      <ip address="192.168.1.37" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-213">
+      <ip address="192.168.1.38" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-214">
+      <ip address="192.168.1.39" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-215">
+      <ip address="192.168.1.40" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ <node client_id="ovs-25">
+    <interface client_id="interface-216">
+      <ip address="192.168.1.41" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-217">
+      <ip address="192.168.1.42" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-218">
+      <ip address="192.168.1.43" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+
+
+
+
+#----------------------------------------------------------------------
+
+   <node client_id="ovs-31">
+    <interface client_id="interface-31">
+      <ip address="192.168.1.44" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-32">
+      <ip address="192.168.1.45" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-33">
+      <ip address="192.168.1.46" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+   <node client_id="ovs-32">
+    <interface client_id="interface-34">
+      <ip address="192.168.1.47" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-35">
+      <ip address="192.168.1.48" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-36">
+      <ip address="192.168.1.49" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-37">
+      <ip address="192.168.1.50" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+   <node client_id="ovs-33">
+    <interface client_id="interface-38">
+      <ip address="192.168.1.51" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-39">
+      <ip address="192.168.1.52" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-310">
+      <ip address="192.168.1.53" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-311">
+      <ip address="192.168.1.54" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+  <node client_id="ovs-34">
+    <interface client_id="interface-312">
+      <ip address="192.168.1.55" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-313">
+      <ip address="192.168.1.56" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-314">
+      <ip address="192.168.1.57" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-315">
+      <ip address="192.168.1.58" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ <node client_id="ovs-35">
+    <interface client_id="interface-316">
+      <ip address="192.168.1.59" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-317">
+      <ip address="192.168.1.60" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-318">
+      <ip address="192.168.1.61" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+
+
+
+
+
+
+#----------------------------------------------------------------------
+
+   <node client_id="ovs-41">
+    <interface client_id="interface-41">
+      <ip address="192.168.1.62" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-42">
+      <ip address="192.168.1.63" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-43">
+      <ip address="192.168.1.64" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+   <node client_id="ovs-42">
+    <interface client_id="interface-44">
+      <ip address="192.168.1.65" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-45">
+      <ip address="192.168.1.66" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-46">
+      <ip address="192.168.1.67" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-47">
+      <ip address="192.168.1.68" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+   <node client_id="ovs-43">
+    <interface client_id="interface-48">
+      <ip address="192.168.1.69" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-49">
+      <ip address="192.168.1.70" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-410">
+      <ip address="192.168.1.71" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-411">
+      <ip address="192.168.1.72" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+  <node client_id="ovs-44">
+    <interface client_id="interface-412">
+      <ip address="192.168.1.73" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-413">
+      <ip address="192.168.1.74" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-414">
+      <ip address="192.168.1.75" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-415">
+      <ip address="192.168.1.76" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ <node client_id="ovs-45">
+    <interface client_id="interface-416">
+      <ip address="192.168.1.77" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-417">
+      <ip address="192.168.1.78" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-418">
+      <ip address="192.168.1.79" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+
+
+
+
+
+#---------------------------------------------------------------------
+
+ <node client_id="ovs-51">
+  <interface client_id="interface-51">
+      <ip address="192.168.1.80" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-52">
+      <ip address="192.168.1.81" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+   </node>
+  <node client_id="ovs-52">
+    <interface client_id="interface-53">
+      <ip address="192.168.1.82" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-54">
+      <ip address="192.168.1.83" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-55">
+      <ip address="192.168.1.84" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+  <node client_id="ovs-53">
+    <interface client_id="interface-56">
+      <ip address="192.168.1.85" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-57">
+      <ip address="192.168.1.86" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-58">
+      <ip address="192.168.1.87" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+   <node client_id="ovs-54">
+    <interface client_id="interface-59">
+      <ip address="192.168.1.88" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-510">
+      <ip address="192.168.1.89" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+     <interface client_id="interface-511">
+      <ip address="192.168.1.90" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ <node client_id="ovs-55">
+    <interface client_id="interface-512">
+      <ip address="192.168.1.91" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <interface client_id="interface-513">
+      <ip address="192.168.1.92" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <auto_install>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+ 
+
+
+#--------------------------------------------------------------------
+  <node client_id="n1">
+   <interface client_id="interface-n1">
+     <ip address="192.168.1.1" type="ipv4" netmask="255.255.255.0"/>
+   </interface>
+  </node>
+  <node client_id="n2">
+   <interface client_id="interface-n2">
+     <ip address="192.168.1.2" type="ipv4" netmask="255.255.255.0"/>
+   </interface>
+  </node>
+  <node client_id="contrôleur">
+    <interface client_id="interface-pox" />
+    <auto_install>
+      <apt name="python"/>
+      <apt name="git"/>
+    </auto_install>
+  </node>
+#link horizentale
+#-------------------------------------------------------------------
+  <link client_id="link-1">     <!--link are equivalent to VLAN-->
+    <interface_ref client_id="interface-11" />
+    <interface_ref client_id="interface-n1" />
+  </link>
+  <link client_id="link-2">
+    <interface_ref client_id="interface-114" />
+    <interface_ref client_id="interface-n2" />
+  </link>
+#------
+  <link client_id="link-3">
+    <interface_ref client_id="interface-12" />
+    <interface_ref client_id="interface-14" />
+  </link>
+
+  <link client_id="link-4">
+    <interface_ref client_id="interface-15" />
+    <interface_ref client_id="interface-17" />
+  </link>
+  <link client_id="link-5">
+    <interface_ref client_id="interface-18" />
+    <interface_ref client_id="interface-110" />
+  </link>
+  <link client_id="link-6">
+    <interface_ref client_id="interface-111" />
+    <interface_ref client_id="interface-113" />
+  </link>
+#--------------------------------------------------------------------------
+ <link client_id="link-7">
+    <interface_ref client_id="interface-22" />
+    <interface_ref client_id="interface-24" />
+  </link>
+
+  <link client_id="link-8">
+    <interface_ref client_id="interface-26" />
+    <interface_ref client_id="interface-28" />
+  </link>
+  <link client_id="link-9">
+    <interface_ref client_id="interface-210" />
+    <interface_ref client_id="interface-212" />
+  </link>
+  <link client_id="link-10">
+    <interface_ref client_id="interface-214" />
+    <interface_ref client_id="interface-216" />
+  </link>
+#-----------------------------------------------------------------------------
+
+ <link client_id="link-11">
+    <interface_ref client_id="interface-32" />
+    <interface_ref client_id="interface-34" />
+  </link>
+
+  <link client_id="link-12">
+    <interface_ref client_id="interface-36" />
+    <interface_ref client_id="interface-38" />
+  </link>
+  <link client_id="link-13">
+    <interface_ref client_id="interface-310" />
+    <interface_ref client_id="interface-312" />
+  </link>
+  <link client_id="link-14">
+    <interface_ref client_id="interface-314" />
+    <interface_ref client_id="interface-316" />
+  </link>
+#------------------------------------------------------------------------------
+
+ <link client_id="link-15">
+    <interface_ref client_id="interface-42" />
+    <interface_ref client_id="interface-44" />
+  </link>
+
+  <link client_id="link-16">
+    <interface_ref client_id="interface-46" />
+    <interface_ref client_id="interface-48" />
+  </link>
+  <link client_id="link-17">
+    <interface_ref client_id="interface-410" />
+    <interface_ref client_id="interface-412" />
+  </link>
+  <link client_id="link-18">
+    <interface_ref client_id="interface-414" />
+    <interface_ref client_id="interface-416" />
+  </link>
+#-------------------------------------------------------------------------------
+
+<link client_id="link-19">
+    <interface_ref client_id="interface-52" />
+    <interface_ref client_id="interface-53" />
+  </link>
+
+  <link client_id="link-20">
+    <interface_ref client_id="interface-55" />
+    <interface_ref client_id="interface-56" />
+  </link>
+  <link client_id="link-21">
+    <interface_ref client_id="interface-58" />
+    <interface_ref client_id="interface-59" />
+  </link>
+  <link client_id="link-22">
+    <interface_ref client_id="interface-511" />
+    <interface_ref client_id="interface-512" />
+  </link>
+#link verticale
+#-------------------------------------------------------------------------------
+
+ <link client_id="link-23">
+    <interface_ref client_id="interface-13" />
+    <interface_ref client_id="interface-21" />
+  </link>
+
+  <link client_id="link-24">
+    <interface_ref client_id="interface-16" />
+    <interface_ref client_id="interface-25" />
+  </link>
+  <link client_id="link-25">
+    <interface_ref client_id="interface-19" />
+    <interface_ref client_id="interface-29" />
+  </link>
+  <link client_id="link-26">
+    <interface_ref client_id="interface-211" />
+    <interface_ref client_id="interface-112" />
+  </link>
+  <link client_id="link-27">
+    <interface_ref client_id="interface-115" />
+    <interface_ref client_id="interface-217" />
+  </link>
+#------------------------------------------------------------------------------
+
+<link client_id="link-28">
+    <interface_ref client_id="interface-23" />
+    <interface_ref client_id="interface-31" />
+  </link>
+
+  <link client_id="link-29">
+    <interface_ref client_id="interface-27" />
+    <interface_ref client_id="interface-35" />
+  </link>
+  <link client_id="link-30">
+    <interface_ref client_id="interface-211" />
+    <interface_ref client_id="interface-39" />
+  </link>
+  <link client_id="link-31">
+    <interface_ref client_id="interface-215" />
+    <interface_ref client_id="interface-313" />
+  </link>
+  <link client_id="link-32">
+    <interface_ref client_id="interface-218" />
+    <interface_ref client_id="interface-317" />
+  </link>
+#---------------------------------------------------------------------------
+
+<link client_id="link-33">
+    <interface_ref client_id="interface-33" />
+    <interface_ref client_id="interface-41" />
+  </link>
+
+  <link client_id="link-34">
+    <interface_ref client_id="interface-37" />
+    <interface_ref client_id="interface-45" />
+  </link>
+  <link client_id="link-35">
+    <interface_ref client_id="interface-311" />
+    <interface_ref client_id="interface-49" />
+  </link>
+  <link client_id="link-36">
+    <interface_ref client_id="interface-315" />
+    <interface_ref client_id="interface-413" />
+  </link>
+  <link client_id="link-37">
+    <interface_ref client_id="interface-318" />
+    <interface_ref client_id="interface-417" />
+  </link>
+#------------------------------------------------------------------------
+
+<link client_id="link-38">
+    <interface_ref client_id="interface-43" />
+    <interface_ref client_id="interface-51" />
+  </link>
+
+  <link client_id="link-39">
+    <interface_ref client_id="interface-47" />
+    <interface_ref client_id="interface-54" />
+  </link>
+  <link client_id="link-40">
+    <interface_ref client_id="interface-411" />
+    <interface_ref client_id="interface-57" />
+  </link>
+  <link client_id="link-41">
+    <interface_ref client_id="interface-415" />
+    <interface_ref client_id="interface-510" />
+  </link>
+  <link client_id="link-42">
+    <interface_ref client_id="interface-418" />
+    <interface_ref client_id="interface-513" />
+  </link>
+
+
+
+</rspec>
+

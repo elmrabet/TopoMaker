@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rspec>
+  <node client_id="node-2">
+    <interface client_id="interface-0"/> <!--No IP precised equals to DHCP-->
+    <interface client_id="interface-1">
+      <ip address="192.168.1.3" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+    <sliver_type name="raw-pc">
+      <disk_image name="jessie-x64-min" /> <!--This is just for the example because default OS chosen by topomaker is jessie-x64-min -->
+    </sliver_type>
+    <auto_install>
+      <apt name="tcpdump"/>
+      <apt name="openvswitch-switch"/>
+    </auto_install>
+  </node>
+  <node client_id="node-1"> 	<!--Here we will have DHCP on jessie x64 min-->
+    <interface client_id="interface-2"/> 
+  </node>
+  <node client_id="node-3"> 	<!--node 3 is equivalent to our node_nancy here it will be on the same site, as we saw it doesn't matter with global vlan-->
+    <interface client_id="interface-4">
+      <ip address="192.168.1.1" type="ipv4" netmask="255.255.255.0" />
+    </interface>
+  </node>
+  <link client_id="link-0"> 	<!--link are equivalent to VLAN-->
+    <interface_ref client_id="interface-0" />
+    <interface_ref client_id="interface-2" />
+  </link>
+  <link client_id="link-1">
+    <interface_ref client_id="interface-1" />
+    <interface_ref client_id="interface-4" />
+  </link>
+</rspec>
